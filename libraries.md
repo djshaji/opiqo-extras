@@ -1,6 +1,6 @@
 # Audio Libraries Build Status
 
-## Build Complete ✅ (6/7 libraries)
+## Build Complete ✅ (7/8 libraries)
 
 All audio codec libraries have been successfully built for Android NDK r29 across 4 ABIs.
 
@@ -13,6 +13,7 @@ All audio codec libraries have been successfully built for Android NDK r29 acros
 | OGG | ✅ Complete | 4 ✓ | 4 ✓ | ✓ | 1.3.6 |
 | Vorbis | ✅ Complete | 4 ✓ | 4 ✓ | ✓ | 1.3.7 |
 | Opus | ✅ Complete | 4 ✓ | 4 ✓ | ✓ | 1.6 |
+| FFTW3 | ✅ Complete | 4 ✓ | 4 ✓ | ✓ | 3.3.10 |
 | libsndfile | ✅ Complete | 4 ✓ | 4 ✓ | ✓ | 1.2.2 |
 | **mpg123** | ❌ Blocked | - | - | - | 1.32.10 |
 
@@ -63,7 +64,20 @@ All audio codec libraries have been successfully built for Android NDK r29 acros
 - **Dependencies**: FLAC, Vorbis, OGG, Opus
 - **Sizes**: arm64-v8a (1.9M .so / 3.8M .a)
 
-### 7. mpg123 (libmpg123)
+### 7. FFTW3 (libfftw3)
+- **Repository**: https://github.com/FFTW/fftw3
+- **Version**: 3.3.10
+- **Purpose**: Fast Fourier Transform library for real/complex data
+- **Status**: ✅ All 4 ABIs complete
+- **Dependencies**: None
+- **Sizes**:
+	- arm64-v8a: 7.9M (.so), 19M (.a)
+	- armeabi-v7a: 6.0M (.so), 11M (.a)
+	- x86_64: 7.0M (.so), 16M (.a)
+	- x86: 5.9M (.so), 9.6M (.a)
+- **Build Notes**: Built with threads and OpenMP disabled for Android compatibility
+
+### 8. mpg123 (libmpg123)
 - **Repository**: https://github.com/libsdl-org/mpg123
 - **Version**: 1.32.10
 - **Purpose**: MPEG audio decoder (MP3 playback)
@@ -73,9 +87,9 @@ All audio codec libraries have been successfully built for Android NDK r29 acros
 
 ## Build Statistics
 
-- **Total Libraries Built**: 6 of 7 (85.7% success)
+- **Total Libraries Built**: 7 of 8 (87.5% success)
 - **Supported ABIs**: 4 (arm64-v8a, armeabi-v7a, x86_64, x86)
-- **Total Binaries**: 48 files (24 .so + 24 .a)
+- **Total Binaries**: 56 files (28 .so + 28 .a)
 - **Total Headers**: ~40 files
 - **Build Environment**: Android NDK r29, Clang 21.0.0, CMake 3.16+
 - **Last Updated**: February 28, 2026 16:15 UTC
@@ -99,9 +113,11 @@ build/                 - Build artifacts
 ./build-flac-all-abis.sh
 ./build-vorbis-all-abis.sh
 ./build-opus-all-abis.sh
+./build-fftw-all-abis.sh
 ./build-libsndfile-all-abis.sh
 
 # Or build specific ABI
 ANDROID_ABI=arm64-v8a ./build-lame.sh
+ANDROID_ABI=x86_64 ./build-fftw.sh
 ANDROID_ABI=x86_64 ./build-flac.sh
 ```

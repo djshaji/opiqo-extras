@@ -8,7 +8,7 @@ This project provides pre-built audio codec libraries for Android development, c
 
 ## Build Status
 
-✅ **6 of 7 libraries successfully built**
+✅ **7 of 8 libraries successfully built**
 
 | Library | Status | Version | Purpose |
 |---------|--------|---------|---------|
@@ -17,6 +17,7 @@ This project provides pre-built audio codec libraries for Android development, c
 | **OGG** | ✅ Complete | 1.3.6 | Audio container format |
 | **Vorbis** | ✅ Complete | 1.3.7 | Ogg Vorbis audio codec |
 | **Opus** | ✅ Complete | 1.6 | Modern audio codec |
+| **FFTW3** | ✅ Complete | 3.3.10 | Fast Fourier Transform library |
 | **libsndfile** | ✅ Complete | 1.2.2 | Audio file I/O library |
 | **mpg123** | ❌ Blocked | 1.32.10 | MPEG audio decoder (POSIX compat issue) |
 
@@ -39,6 +40,7 @@ jniLibs/
 │   ├── libmp3lame.so (1023K)
 │   ├── libogg.so (84K)
 │   ├── libopus.so (1.9M)
+│   ├── libfftw3.so (7.9M)
 │   ├── libsndfile.so (varies)
 │   └── libvorbis.so (608K)
 ├── armeabi-v7a/
@@ -59,6 +61,7 @@ libs/
 │   ├── libmp3lame.a (1.8M)
 │   ├── libogg.a (126K)
 │   ├── libopus.a (3.5M)
+│   ├── libfftw3.a (19M)
 │   ├── libsndfile.a (varies)
 │   └── libvorbis.a (1020K)
 └── [other ABIs...]
@@ -73,6 +76,7 @@ include/
 ├── ogg/
 ├── opus/
 ├── vorbis/
+├── fftw3.h
 ├── lame.h
 └── sndfile.h
 ```
@@ -88,6 +92,7 @@ include/
 ./build-flac-all-abis.sh
 ./build-vorbis-all-abis.sh
 ./build-opus-all-abis.sh
+./build-fftw-all-abis.sh
 ./build-libsndfile-all-abis.sh
 ```
 
@@ -122,6 +127,7 @@ OGG (no dependencies)
 
 LAME (standalone)
 Opus (standalone)
+FFTW3 (standalone)
 mpg123 (standalone, not built)
 ```
 
@@ -193,6 +199,12 @@ export BUILD_JOBS=8
 - Excellent quality
 - **Size**: ~1.9MB (shared), ~3.5MB (static) for arm64
 
+### FFTW3 (libfftw3)
+- Fast Fourier Transform for 1D/2D/3D data
+- Real and complex transforms
+- Highly optimized generated codelets
+- **Size**: ~7.9MB (shared), ~19MB (static) for arm64
+
 ### libsndfile
 - Reads/writes many audio formats (WAV, AIFF, AU, etc.)
 - Integrates FLAC, Vorbis, Opus codecs
@@ -224,6 +236,7 @@ Each library retains its original license:
 - **OGG**: BSD-like (Xiph.org)
 - **Vorbis**: BSD-like (Xiph.org)
 - **Opus**: BSD
+- **FFTW3**: GPL v2+
 - **libsndfile**: LGPL v2.1+
 
 See individual source directories for full license texts.
@@ -247,6 +260,7 @@ opiqo-extra/
 │   ├── ogg/
 │   ├── vorbis/
 │   ├── opus/
+│   ├── fftw-3.3.10/
 │   ├── libsndfile/
 │   └── mpg123/
 ├── build/             # Build artifacts (gitignored)
@@ -289,5 +303,6 @@ Thanks to the maintainers of:
 - LAME Project
 - Xiph.Org Foundation (FLAC, OGG, Vorbis)
 - Opus Codec
+- FFTW Team
 - libsndfile
 - mpg123 Project
