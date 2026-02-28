@@ -51,7 +51,7 @@ cmake \
     -DANDROID_PLATFORM="$ANDROID_PLATFORM" \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
-    -DENABLE_FLOAT=OFF \
+    -DENABLE_FLOAT=ON \
     -DENABLE_THREADS=OFF \
     -DENABLE_OPENMP=OFF \
     -DBUILD_TESTS=OFF \
@@ -59,12 +59,12 @@ cmake \
 
 cmake --build . -j"$BUILD_JOBS"
 
-SHARED_LIB_PATH=$(find . -maxdepth 2 -type f -name "libfftw3.so" | head -n 1)
+SHARED_LIB_PATH=$(find . -maxdepth 2 -type f -name "libfftw3f.so" | head -n 1)
 if [ -n "$SHARED_LIB_PATH" ] && [ -f "$SHARED_LIB_PATH" ]; then
-    cp "$SHARED_LIB_PATH" "$SHARED_LIB_DIR/libfftw3.so"
-    echo "✓ Shared library: $SHARED_LIB_DIR/libfftw3.so ($(ls -lh "$SHARED_LIB_DIR/libfftw3.so" | awk '{print $5}'))"
+    cp "$SHARED_LIB_PATH" "$SHARED_LIB_DIR/libfftw3f.so"
+    echo "✓ Shared library: $SHARED_LIB_DIR/libfftw3f.so ($(ls -lh "$SHARED_LIB_DIR/libfftw3f.so" | awk '{print $5}'))"
 else
-    echo "✗ Shared library libfftw3.so not found!"
+    echo "✗ Shared library libfftw3f.so not found!"
     exit 1
 fi
 
@@ -80,7 +80,7 @@ cmake \
     -DANDROID_PLATFORM="$ANDROID_PLATFORM" \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=OFF \
-    -DENABLE_FLOAT=OFF \
+    -DENABLE_FLOAT=ON \
     -DENABLE_THREADS=OFF \
     -DENABLE_OPENMP=OFF \
     -DBUILD_TESTS=OFF \
@@ -88,12 +88,12 @@ cmake \
 
 cmake --build . -j"$BUILD_JOBS"
 
-STATIC_LIB_PATH=$(find . -maxdepth 2 -type f -name "libfftw3.a" | head -n 1)
+STATIC_LIB_PATH=$(find . -maxdepth 2 -type f -name "libfftw3f.a" | head -n 1)
 if [ -n "$STATIC_LIB_PATH" ] && [ -f "$STATIC_LIB_PATH" ]; then
-    cp "$STATIC_LIB_PATH" "$STATIC_LIB_DIR/libfftw3.a"
-    echo "✓ Static library: $STATIC_LIB_DIR/libfftw3.a ($(ls -lh "$STATIC_LIB_DIR/libfftw3.a" | awk '{print $5}'))"
+    cp "$STATIC_LIB_PATH" "$STATIC_LIB_DIR/libfftw3f.a"
+    echo "✓ Static library: $STATIC_LIB_DIR/libfftw3f.a ($(ls -lh "$STATIC_LIB_DIR/libfftw3f.a" | awk '{print $5}'))"
 else
-    echo "✗ Static library libfftw3.a not found!"
+    echo "✗ Static library libfftw3f.a not found!"
     exit 1
 fi
 
