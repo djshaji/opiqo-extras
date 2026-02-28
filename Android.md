@@ -1,0 +1,11 @@
+Build libraries for Android using CMake and NDK. Use the following command to build the libraries:
+- Minimum API level: 34
+- NDK PATH: /home/djshaji/Downloads/ndk-29/android-ndk-r29
+- Build both static and shared libraries
+- Build for following ABIs: arm64-v8a, armeabi-v7a, x86, x86_64
+- Use CMake toolchain file provided by NDK
+- Set CMAKE_BUILD_TYPE to Release
+- Output shared libraries to a directory named "jniLibs" in the current working directory
+- Organize output by ABI, e.g., jniLibs/arm64-v8a/libmp3lame.so
+- Output static libraries to a directory named "libs" in the current working directory
+- Organize output by ABI, e.g., libs/arm64-v8a/libmp3lame.a
